@@ -1,422 +1,216 @@
-<!-- mcp-name: com.browser-use/browser-use -->
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/2ccdb752-22fb-41c7-8948-857fc1ad7e24">
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/774a46d5-27a0-490c-b7d0-e65fcbbfa358">
-  <img alt="Shows a black Browser Use Logo in light color mode and a white one in dark color mode." src="https://github.com/user-attachments/assets/2ccdb752-22fb-41c7-8948-857fc1ad7e24"  width="full">
-</picture>
-
+﻿<!-- GemmaBrowserAgent -->
 <div align="center">
-    <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/9955dda9-ede3-4971-8ee0-91cbc3850125">
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/6797d09b-8ac3-4cb9-ba07-b289e080765a">
-    <img alt="The AI browser agent." src="https://github.com/user-attachments/assets/9955dda9-ede3-4971-8ee0-91cbc3850125"  width="400">
-    </picture>
-</div>
 
-<div align="center">
-<a href="https://cloud.browser-use.com?utm_source=github&utm_medium=readme-badge-downloads"><img src="https://media.browser-use.tools/badges/package" height="48" alt="Browser-Use Package Download Statistics"></a>
+# 🦾 GemmaBrowserAgent
+
+### *Open-weight AI meets the open web — autonomous browser automation powered by Gemma & the Gemini API*
+
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?logo=python)](https://www.python.org/)
+[![Gemini API](https://img.shields.io/badge/Gemini%20API-4285F4?logo=google&logoColor=white)](https://aistudio.google.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Built on browser-use](https://img.shields.io/badge/built%20on-browser--use-8B5CF6)](https://github.com/browser-use/browser-use)
+
+**Forked from [browser-use](https://github.com/browser-use/browser-use) for the Google Gemma Hackathon 2026.**
+
 </div>
 
 ---
 
-<div align="center">
-<a href="#navigate-the-web-like-a-human-does"><img src="https://media.browser-use.tools/badges/demos" alt="Demos"></a>
-<img width="16" height="1" alt="">
-<a href="https://docs.browser-use.com"><img src="https://media.browser-use.tools/badges/docs" alt="Docs"></a>
-<img width="16" height="1" alt="">
-<a href="https://browser-use.com/posts"><img src="https://media.browser-use.tools/badges/blog" alt="Blog"></a>
-<img width="16" height="1" alt="">
-<a href="https://browsermerch.com"><img src="https://media.browser-use.tools/badges/merch" alt="Merch"></a>
-<img width="100" height="1" alt="">
-<a href="https://github.com/browser-use/browser-use"><img src="https://media.browser-use.tools/badges/github" alt="Github Stars"></a>
-<img width="4" height="1" alt="">
-<a href="https://x.com/intent/user?screen_name=browser_use"><img src="https://media.browser-use.tools/badges/twitter" alt="Twitter"></a>
-<img width="4" height="1" alt="">
-<a href="https://link.browser-use.com/discord"><img src="https://media.browser-use.tools/badges/discord" alt="Discord"></a>
-<img width="4" height="1" alt="">
-<a href="https://cloud.browser-use.com?utm_source=github&utm_medium=readme-badge-cloud"><img src="https://media.browser-use.tools/badges/cloud" height="48" alt="Browser-Use Cloud"></a>
-</div>
+## What is GemmaBrowserAgent?
 
-<br/>
+GemmaBrowserAgent is a hackathon fork of the open-source `browser-use` project that wires **Google's Gemma / Gemini models** directly into a full browser-automation agent. It lets an open-weight LLM see, reason about, and act on any website — using screenshots and DOM snapshots together for true multimodal understanding.
 
-<div align="center">
-  <a href="https://browser-use.com">
-    <img src="https://browser-use.com/lander/plates/browsers-8dd60aa0.jpg" alt="A person crossing an orange canyon on a giant key-shaped bridge, from the Browser Use website." width="720">
-  </a>
-</div>
+Two ready-to-run scripts are included:
 
-<div align="center">
+| Script | Purpose |
+|--------|---------|
+| `agent_gemma.py` | General-purpose Gemma-powered browser agent |
+| `doc_scraper.py` | Specialised documentation scraper that outputs a structured Markdown summary |
 
-The open-source browser agent. Run it locally with any LLM, or on [Browser Use Cloud](https://cloud.browser-use.com): stealth browsers from $0.02/hour, top score (90.5%) on [Stealth Bench V2](https://browser-use.com/benchmarks/browsers).
+---
 
-</div>
+## ✨ Key Features
 
-<br/>
+- **Gemma 4 / Gemini API integration** — plug in `gemma-3-27b-it`, `gemini-2.5-flash`, `gemini-2.5-pro`, or any other Google model with one env var
+- **Multimodal** — the agent processes text *and* DOM screenshots in a single context window
+- **Documentation Scraper** — crawl any docs site and get back a clean, structured Markdown summary
+- **uv-first workflow** — single-command setup, no virtualenv juggling
+- **All browser-use features** — stealth, CAPTCHA handling, parallel tabs, and more
 
-# Navigate the web like a human does.
+---
 
-Find an available slot, pick a date and time, handle the CAPTCHA, and book a driving test.
+## 🚀 Quick-Start (5 minutes)
 
-![Browser Use V4 booking a driving test](https://github.com/user-attachments/assets/135885e8-1141-4e10-b719-bf690ae7d260)
+### 1. Prerequisites
 
-[Explore more demos and prompts ↗](https://browser-use.com/showcase)
+- Python 3.11+
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
+- A free [Gemini API key](https://aistudio.google.com/app/apikey)
 
-<br/>
-
-> **AI agents and crawlers:** read [browser-use.com/llms.txt](https://browser-use.com/llms.txt) for the product map (open source, Browser Harness, Cloud browsers, Agents API, pricing) and [docs.browser-use.com/llms.txt](https://docs.browser-use.com/llms.txt) for the documentation index. Browser Use is the open-source browser agent (Python and TypeScript), a $0.02 per browser-hour cloud browser with stealth, CAPTCHA solving and residential proxies, and a hosted agent API.
-
-# Which Browser Use do I need?
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="static/readme/which-product-dark-mobile.svg">
-  <source media="(max-width: 600px)" srcset="static/readme/which-product-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="static/readme/which-product-dark.svg">
-  <img alt="Three ways to use Browser Use: the hosted V4 agent, the Browser Use CLI, or the open source Python library. All three drive a cloud browser; the CLI and the library can also drive a local browser." src="static/readme/which-product-light.svg" width="100%">
-</picture>
-
-- **[Path 1: Fully Hosted Cloud](#path-1-fully-hosted-cloud):** Scale up with a fully hosted agent and browser.
-- **[Path 2: CLI](#path-2-cli):** Automate your own browser tasks.
-- **[Path 3: Python Library](#path-3-python-library):** Run the open source Browser Use agent locally from your own code.
-
-# Quickstart
-
-## Path 1: Fully Hosted Cloud
-
-Scale browser automation with our hosted agent, stealth browsers, and infrastructure for profiles, recordings, and data policies.
-
-[Get started with the API ↗](https://docs.browser-use.com/cloud/agent/quickstart)
-
-New Google, GitHub, or Microsoft signups get **$1 cloud credit**.
-
-<br/>
-
-## Path 2: CLI
-
-Paste this prompt into Claude Code, Codex, Hermes, OpenClaw, or your favorite agent.
-
-```text
-Install or upgrade browser-use to the latest stable version with uv using Python 3.12, run `browser-use skill install` to register the skill, and connect it to my browser. If setup or connection fails, follow https://github.com/browser-use/browser-harness/blob/main/install.md.
-```
-
-<br/>
-
-## Path 3: Python Library
-
-Run the Browser Use agent locally from Python, with your choice of model and a local or cloud browser:
-
-**1. Install Browser Use (Python >= 3.11):**
-
-With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run `uv init --python 3.12` first if you're starting a new project.
+### 2. Clone & install
 
 ```bash
-uv add browser-use
+git clone https://github.com/<your-username>/GemmaBrowserAgent.git
+cd GemmaBrowserAgent
+
+# create a uv project and install dependencies
+uv init --python 3.12
+uv add browser-use python-dotenv
+uv run playwright install chromium
 ```
 
-**2. Add your [OpenAI API key](https://platform.openai.com/api-keys) to `.env`:**
+### 3. Configure
 
 ```bash
-# .env
-OPENAI_API_KEY=your-key
-# BROWSER_USE_API_KEY=your-key  # Optional: BU2 model or cloud browser
+cp .env.example .env
+# Open .env and set GEMINI_API_KEY=<your key>
 ```
 
-For either optional Browser Use service, get a [Browser Use API key](https://cloud.browser-use.com/new-api-key).
-
-**3. Save this as `agent.py`:**
-
-```python
-import asyncio
-
-from browser_use import Agent, Browser, ChatBrowserUse, ChatOpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
-
-async def main():
-    llm = ChatOpenAI(model='gpt-5.6-luna', reasoning_effort='xhigh')
-    # llm = ChatBrowserUse(model='bu-2-0')  # Use BU2 instead; requires BROWSER_USE_API_KEY
-    agent = Agent(
-        task="Find the number of stars of the browser-use repo",
-        llm=llm,
-        # browser=Browser(use_cloud=True),  # Use a cloud browser; requires BROWSER_USE_API_KEY
-    )
-    history = await agent.run()
-    print(history.final_result())
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-To use BU2, replace the `ChatOpenAI` line with the commented `ChatBrowserUse` line. The cloud-browser option works with either model.
-
-**4. Run it:**
+### 4. Run the general agent
 
 ```bash
-uv run agent.py
+uv run agent_gemma.py
 ```
 
-The agent opens a browser, looks up the repository, and prints its answer.
+Override the task inline:
 
-**5. Run the same agent on a cloud browser (no Chrome to install; works in Docker, CI, and serverless):**
-
-Set `BROWSER_USE_API_KEY` ([get a key](https://cloud.browser-use.com/new-api-key?utm_source=github&utm_medium=readme-path3)), then uncomment the `browser=` line in `agent.py` and run it again:
-
-```python
-    agent = Agent(
-        task="Find the number of stars of the browser-use repo",
-        llm=llm,
-        browser=Browser(use_cloud=True),
-    )
+```bash
+TASK="Find the latest release notes for Python 3.14" uv run agent_gemma.py
 ```
 
-Cloud browsers cost $0.02 per browser-hour plus network traffic ([pricing](https://browser-use.com/pricing)), and add stealth, residential proxies, CAPTCHA solving, and a live view URL. Same code, no other changes.
+### 5. Run the documentation scraper
 
-[Python library docs ↗](https://docs.browser-use.com/open-source/introduction)
-
-<br/>
-
-# Browser Use toolsets for Claude
-
-Maintained by Browser Use. Compatible with Claude.
-
-Use Claude's browser toolset with Browser Use as the driver. Browser Use
-implements all 31 browser actions and can control a local browser, a Browser
-Use Cloud browser, or an existing remote browser over CDP.
-Bash is included in the Browser Use integration for processing data and writing files.
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="examples/integrations/toolsets-for-claude/architecture-dark-mobile.svg">
-  <source media="(max-width: 600px)" srcset="examples/integrations/toolsets-for-claude/architecture-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="examples/integrations/toolsets-for-claude/architecture-dark.svg">
-  <img alt="Claude uses Browser Use browser actions and Bash through the Anthropic SDK. The browser can be local or remote; Bash runs on the SDK host." src="examples/integrations/toolsets-for-claude/architecture-light.svg" width="100%">
-</picture>
-
-Requires an Anthropic SDK version that includes `anthropic.tools.browser`.
-Bash requires a Linux or macOS host with `/bin/bash`; use WSL on Windows.
-The snippet below runs inside an async function; see the quickstart for a complete script.
-
-```python
-import os
-
-from anthropic import AsyncAnthropic
-from browser_use.integrations.toolsets_for_claude import Bash, BrowserUse
-
-task = 'Open example.com and report its page title.'
-driver = BrowserUse()  # Or BrowserUse(use_cloud=True)
-bash = Bash(output_dir='outputs')
-
-async with driver, AsyncAnthropic() as client:
-    runner = client.beta.messages.tool_runner(
-        model=os.environ['ANTHROPIC_MODEL'],
-        max_tokens=32_768,
-        max_iterations=100,
-        tools=[driver, bash],
-        messages=[{'role': 'user', 'content': task}],
-    )
-    result = await runner.until_done()
+```bash
+uv run doc_scraper.py
 ```
 
-[Quickstart ↗](examples/integrations/toolsets-for-claude) · [Integration docs ↗](https://docs.browser-use.com/open-source/customize/integrations/toolsets-for-claude)
+Scrape a different site (saves Markdown to `./output/`):
 
-<br/>
-
-# Browser Use Benchmark v2
-
-<img alt="Browser Use Benchmark v2 - Mean rubric score by model and cost per task" src="static/hard_benchmark_v2.jpg" width="100%">
-
-This [very hard benchmark](https://github.com/browser-use/benchmark) targets the hardest browser tasks. On easier tasks, even smaller models can achieve very high success rates. Results shown are from a 60-task subset of BU Bench V2.
-
-## Integrations, hosting, custom tools, MCP, and more on our [Docs ↗](https://docs.browser-use.com)
-
-<br/>
-
-# FAQ
-
-<details>
-<summary><b>Should I use the fully hosted cloud, CLI, or Python library?</b></summary>
-
-- **[Fully Hosted Cloud](#path-1-fully-hosted-cloud):** Send tasks through the API and let Browser Use run the agent, browser, and infrastructure.
-- **[CLI](#path-2-cli):** Give an existing agent (Claude Code, Codex, Hermes, OpenClaw, Pi, Cursor, etc.) browser access. You can use it interactively or in scripts.
-- **[Python Library](#path-3-python-library):** Run the open source agent in your own application, with custom tools, structured output, and your choice of model.
-
-The CLI and Python library can each connect to a local or cloud browser. A cloud browser hosts the browser; the fully hosted API runs the agent as well.
-</details>
-
-<details>
-<summary><b>What's the best model to use?</b></summary>
-
-We recommend **BU2**, our model optimized for browser automation: `ChatBrowserUse(model='bu-2-0')`. It uses `BROWSER_USE_API_KEY`; `ChatBrowserUse()` currently selects the same model.
-
-The best choice depends on your tasks, latency, and budget. See the [BU2 model card](https://docs.browser-use.com/open-source/bu-2-0-model-card), [benchmark](https://github.com/browser-use/benchmark), and [supported models and pricing](https://docs.browser-use.com/open-source/supported-models) to compare options.
-</details>
-
-<details>
-<summary><b>Can I use Claude / GPT / Gemini through ChatBrowserUse?</b></summary>
-
-Yes. `ChatBrowserUse` accepts provider-prefixed model IDs through the Browser Use gateway, using `BROWSER_USE_API_KEY`:
-
-```python
-from browser_use import Agent, ChatBrowserUse
-
-llm = ChatBrowserUse(model='anthropic/claude-sonnet-4-6')  # or 'google/gemini-3-pro'
-agent = Agent(task='...', llm=llm)
+```bash
+DOC_URL=https://docs.pydantic.dev MAX_PAGES=8 uv run doc_scraper.py
 ```
 
-You can also use providers directly through wrappers such as `ChatOpenAI`, `ChatAnthropic`, and `ChatGoogle`, with each provider's own API key. See [supported models](https://docs.browser-use.com/open-source/supported-models).
-</details>
+---
 
-<details>
-<summary><b>Do I need to provide a system prompt?</b></summary>
+## ⚙️ Configuration Reference
 
-No. `Agent(...)` supplies the Browser Use system prompt automatically, including when you change models. Put your task in `task=`. Use `extend_system_message` to add instructions or `override_system_message` to replace the default prompt when you need custom behavior.
+All config lives in `.env`:
 
-See the [custom system prompt example](https://github.com/browser-use/browser-use/blob/main/examples/features/custom_system_prompt.py).
-</details>
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `GEMINI_API_KEY` | *(required)* | Your Google AI Studio API key |
+| `GEMMA_MODEL` | `gemma-3-27b-it` | Model ID — any Gemini/Gemma model string |
+| `TASK` | See `agent_gemma.py` | Override the default agent task |
+| `DOC_URL` | `https://docs.browser-use.com` | Target docs site for the scraper |
+| `MAX_PAGES` | `5` | Max pages to crawl in the scraper |
+| `OUTPUT_DIR` | `./output` | Where scraped Markdown files are saved |
+| `BROWSER_USE_LOGGING_LEVEL` | `info` | Logging verbosity (`debug`/`info`/`warning`) |
+| `ANONYMIZED_TELEMETRY` | `false` | Opt out of telemetry |
 
-<details>
-<summary><b>Can I use custom tools with the agent?</b></summary>
+---
 
-Yes. Register a function with `Tools` and pass it to the agent. This example adds a tool for the current UTC time and uses `BROWSER_USE_API_KEY` from `.env`:
+## 🧠 How It Works
 
-```python
-import asyncio
-from datetime import datetime, timezone
-
-from browser_use import ActionResult, Agent, ChatBrowserUse, Tools
-from dotenv import load_dotenv
-
-load_dotenv()
-tools = Tools()
-
-@tools.action(description='Get the current date and time in UTC.')
-def get_current_time() -> ActionResult:
-    return ActionResult(extracted_content=datetime.now(timezone.utc).isoformat())
-
-async def main():
-    agent = Agent(
-        task="What is the current UTC time?",
-        llm=ChatBrowserUse(model='bu-2-0'),
-        tools=tools,
-    )
-    history = await agent.run()
-    print(history.final_result())
-
-if __name__ == "__main__":
-    asyncio.run(main())
+```
+User Task  ──►  GemmaBrowserAgent
+                      │
+              ┌───────▼────────┐
+              │  browser-use   │  ← orchestration, tool execution
+              │  Agent loop    │
+              └───────┬────────┘
+                      │  screenshot + DOM snapshot
+              ┌───────▼────────┐
+              │  ChatGoogle    │  ← Gemma/Gemini via google-genai SDK
+              │  (multimodal)  │
+              └───────┬────────┘
+                      │  next action (click / type / navigate / done)
+              ┌───────▼────────┐
+              │   Playwright   │  ← real Chromium browser
+              └────────────────┘
 ```
 
-</details>
+The agent loop:
+1. Takes a screenshot + extracts the DOM
+2. Sends both to Gemma/Gemini along with the task and history
+3. Gemma returns the next browser action
+4. Playwright executes it
+5. Repeat until the task is complete
 
-<details>
-<summary><b>Can I use this for free?</b></summary>
+---
 
-The Python library is free and [MIT-licensed](LICENSE). Model inference and hosted browsers are separate: API providers, including `ChatBrowserUse`, and Browser Use Cloud charge for usage. You can also use a local browser and a local model through [Ollama](https://docs.browser-use.com/open-source/supported-models#ollama), subject to your hardware and model requirements.
-</details>
+## 📂 Project Structure
 
-<details>
-<summary><b>Terms of Service</b></summary>
+```
+GemmaBrowserAgent/
+├── agent_gemma.py       # ← NEW: General Gemma agent entry point
+├── doc_scraper.py       # ← NEW: Documentation scraper agent
+├── .env.example         # ← NEW: Env template with Gemini config
+├── output/              # ← scraped summaries land here
+│
+├── browser_use/         # Core browser-use library (upstream)
+│   ├── llm/google/      # ChatGoogle wrapper (supports all Gemma/Gemini models)
+│   ├── agent/           # Agent loop, prompts, memory
+│   └── browser/         # Playwright session management
+│
+└── examples/            # Upstream example scripts
+```
 
-This open-source library is licensed under the MIT License. For Browser Use services & data policy, see our [Terms of Service](https://browser-use.com/legal/terms-of-service) and [Privacy Policy](https://browser-use.com/privacy/).
-</details>
+---
 
-<details>
-<summary><b>How do I handle authentication?</b></summary>
+## 🎯 Hackathon Requirements Mapping
 
-- **Local browser:** Use `Browser.from_system_chrome()` to reuse a Chrome profile. See the [real-browser guide](https://docs.browser-use.com/open-source/customize/browser/real-browser) and [example](https://github.com/browser-use/browser-use/blob/main/examples/browser/real_browser.py).
-- **Cloud browser:** Follow the [profile sync guide](https://github.com/browser-use/browser-harness/blob/main/interaction-skills/profile-sync.md), then use `Browser(use_cloud=True, cloud_profile_id='your-profile-id')`.
+| Requirement | Implementation |
+|-------------|---------------|
+| **AI Integration (Gemma 4 / Gemini API)** | `agent_gemma.py` — uses `ChatGoogle(model="gemma-3-27b-it")` via `google-genai` SDK |
+| **Multimodal (text + images)** | `ChatGoogle` sends DOM snapshots + screenshots to the model each step |
+| **Custom use case** | `doc_scraper.py` — crawls docs sites and outputs structured Markdown summaries |
+| **Unique branding** | This README + project name `GemmaBrowserAgent` |
+| **uv setup** | Single `uv add browser-use` install, `uv run` to execute |
 
-Profile sync transfers cookies, not local storage, IndexedDB, or extensions. Some sites may require you to sign in again.
-</details>
+---
 
-<details>
-<summary><b>How do I solve CAPTCHAs?</b></summary>
+## 🛠 Extending the Agent
 
-[Browser Use Cloud](https://docs.browser-use.com/cloud/browser/quickstart) provides stealth browsers and proxies designed to reduce bot detection and CAPTCHA challenges. With the Python library, enable a cloud browser with `Browser(use_cloud=True)` and set `BROWSER_USE_API_KEY`.
-
-Results depend on the site and challenge; no browser configuration guarantees that every CAPTCHA can be avoided or solved.
-</details>
-
-<details>
-<summary><b>How do I go into production?</b></summary>
-
-Choose how much you want to manage:
-
-- **Keep your agent code:** Connect the CLI or Python library to [cloud browsers](https://docs.browser-use.com/cloud/browser/quickstart) for managed browser infrastructure, stealth, profiles, and recordings.
-- **Have us run the agent too:** Use the [fully hosted Cloud API](https://docs.browser-use.com/cloud/agent/quickstart) to submit tasks and retrieve results.
-
-You can also host the Python library and browsers on your own infrastructure.
-</details>
-
-<details>
-<summary><b>Can I rerun a task without calling the model on every step?</b></summary>
-
-Yes. Save a successful run, then replay its clicks and typing with new values. The snippet below runs inside an async function:
+### Use a different Gemini model
 
 ```python
-from browser_use import Agent, ChatBrowserUse
-
-llm = ChatBrowserUse()
-agent = Agent(task='Open https://example.com/billing and request an invoice copy for Ada Lovelace, ada@example.com', llm=llm)
-await agent.run()
-agent.save_history('invoice_run.json')
-print(agent.detect_variables())  # names come from the form's fields, e.g. 'name' and 'email'
-
-# Later: the same clicks and typing with new values, no model call per step
-results = await Agent(task='', llm=llm).load_and_rerun(
-    'invoice_run.json', variables={'name': 'Grace Hopper', 'email': 'grace@example.com'}, skip_failures=False
+# In agent_gemma.py or doc_scraper.py
+llm = ChatGoogle(
+    model="gemini-2.5-pro",   # or "gemini-2.5-flash", "gemma-3-27b-it"
+    api_key=API_KEY,
+    temperature=0.1,
 )
 ```
 
-- Use the variable names `detect_variables()` prints. An unknown name is skipped with a warning, and the recorded value is typed instead.
-- Extract steps and the closing summary still call the model.
-- If the page changed, the replay raises `RuntimeError` at the first step it cannot match. The steps before it already ran, so check whether the form was sent before you run the agent again.
-- Keep the saved file private. With `sensitive_data`, typed secrets are saved as `<secret>key</secret>` placeholders, but page snapshots and results are saved as they were and can still contain them. Give the replaying agent the same `sensitive_data`; without it, the placeholder text is typed.
+### Add custom browser actions
 
-[Example](examples/features/rerun_history.py)
-</details>
+```python
+from browser_use.controller import Controller
+from pydantic import BaseModel
 
-<br/>
+controller = Controller()
 
-## Related Repositories
+@controller.action("Save page content to file")
+def save_to_file(content: str, filename: str) -> str:
+    with open(filename, "w") as f:
+        f.write(content)
+    return f"Saved to {filename}"
 
-| Repository | What it's for |
-| --- | --- |
-| [Browser Harness](https://github.com/browser-use/browser-harness) | Our CLI for giving AI agents control of your browser. |
-| [Browser Harness JS](https://github.com/browser-use/browser-harness-js) | Give your JavaScript agent control of a real browser. |
-| [Browser Use Pi](https://github.com/browser-use/browser-use-pi) | Run a TypeScript browser agent built on Pi. |
-| [Cloud SDK](https://github.com/browser-use/sdk) | Integrate Browser Use Cloud into your application. |
-| [Video Use](https://github.com/browser-use/video-use) | Edit videos with your coding agent. |
-| [macOS Harness](https://github.com/browser-use/macos-harness) | Give your agent control of Mac apps, browsers, and files. |
-| [Benchmark](https://github.com/browser-use/benchmark) | Explore browser tasks and compare agent performance. |
-
-<br/>
-
-## Citation
-
-If you use Browser Use in your research or project, please cite:
-
-```bibtex
-@software{browser_use2024,
-  author = {Müller, Magnus and Žunič, Gregor},
-  title = {Browser Use: Enable AI to control your browser},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/browser-use/browser-use}
-}
+agent = Agent(task=task, llm=llm, controller=controller)
 ```
 
-<br/>
+---
+
+## 📜 License
+
+MIT — see [LICENSE](LICENSE). This project is a fork of [browser-use](https://github.com/browser-use/browser-use), which is also MIT licensed.
+
+---
 
 <div align="center">
 
-**Tell your computer what to do, and it gets it done.**
+Built with ❤️ for the **Google Gemma Hackathon 2026**
 
-<img src="https://github.com/user-attachments/assets/06fa3078-8461-4560-b434-445510c1766f" width="400"/>
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/Magnus?style=social)](https://x.com/intent/user?screen_name=mamagnus00)
-&emsp;&emsp;&emsp;
-[![Twitter Follow](https://img.shields.io/twitter/follow/Gregor?style=social)](https://x.com/intent/user?screen_name=gregpr07)
+[browser-use](https://github.com/browser-use/browser-use) · [Gemini API](https://aistudio.google.com/) · [google-genai SDK](https://github.com/googleapis/python-genai)
 
 </div>
-
-<div align="center"> Made with ❤️ in Zurich and San Francisco </div>
