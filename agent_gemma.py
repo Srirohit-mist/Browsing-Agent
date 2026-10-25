@@ -1,4 +1,4 @@
-﻿"""
+"""
 GemmaBrowserAgent - agent_gemma.py
 ===================================
 Hackathon demo: Launch a browser-use Agent using Gemma 4 / Gemini API
@@ -26,11 +26,11 @@ load_dotenv()
 # Model selection
 # Gemma 4 is accessed through the Gemini API with model ID "gemma-3-27b-it".
 # Swap to any VerifiedGeminiModels string as needed:
-#   "gemini-2.5-flash"   -> fast, multimodal
+#   "gemini-3.8-flash"   -> fast, multimodal (recommended)
 #   "gemini-2.5-pro"     -> most capable
 #   "gemma-3-27b-it"     -> open-weight Gemma via Gemini API
 # ---------------------------------------------------------------------------
-MODEL_ID: str = os.getenv("GEMMA_MODEL", "gemma-3-27b-it")
+MODEL_ID: str = os.getenv("GEMMA_MODEL", "gemini-3.8-flash")
 API_KEY: str | None = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 if not API_KEY:
@@ -70,7 +70,7 @@ async def main() -> None:
 
     print("\n Task complete!")
     print("=" * 60)
-    print(result)
+    print(str(result).encode('utf-8', errors='replace').decode('utf-8'))
     print("=" * 60)
 
 
