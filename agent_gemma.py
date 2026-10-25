@@ -1,14 +1,14 @@
 """
 GemmaBrowserAgent - agent_gemma.py
 ===================================
-Hackathon demo: Launch a browser-use Agent using Gemma 4 / Gemini API
-with multimodal capabilities (text + DOM screenshots).
+Hackathon demo: Launch a browser-use Agent powered by ChatBrowserUse —
+the fastest and most accurate model for browser automation tasks.
 
 Usage:
-    uv run agent_gemma.py
+    python agent_gemma.py
 
 Requirements (.env):
-    GEMINI_API_KEY=your-google-ai-studio-key
+    BROWSER_USE_API_KEY=your-browser-use-api-key
     TASK="Your browser task here"      # optional, has a default
 """
 
@@ -17,27 +17,23 @@ import os
 
 from dotenv import load_dotenv
 
-from browser_use import Agent
-from browser_use.llm.google import ChatGoogle
+from browser_use import Agent, ChatBrowserUse
 
 load_dotenv()
 
 # ---------------------------------------------------------------------------
-# Model selection
-# Gemma 4 is accessed through the Gemini API with model ID "gemma-3-27b-it".
-# Swap to any VerifiedGeminiModels string as needed:
-#   "gemini-3.8-flash"   -> fast, multimodal (recommended)
-#   "gemini-2.5-pro"     -> most capable
-#   "gemma-3-27b-it"     -> open-weight Gemma via Gemini API
+# ChatBrowserUse is the recommended model for browser automation:
+# - Highest accuracy + fastest speed + lowest token cost
+# - Built specifically for the Browser Use library
+# Get your API key at: https://cloud.browser-use.com/new-api-key
 # ---------------------------------------------------------------------------
-MODEL_ID: str = os.getenv("GEMMA_MODEL", "gemini-3.8-flash")
-API_KEY: str | None = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+API_KEY: str | None = os.getenv("BROWSER_USE_API_KEY")
 
 if not API_KEY:
     raise EnvironmentError(
-        "No Gemini API key found. "
-        "Set GEMINI_API_KEY in your .env file. "
-        "Get one free at https://aistudio.google.com/app/apikey"
+        "No Browser Use API key found. "
+        "Set BROWSER_USE_API_KEY in your .env file. "
+        "Get one free at https://cloud.browser-use.com/new-api-key"
     )
 
 DEFAULT_TASK = (
@@ -47,22 +43,13 @@ DEFAULT_TASK = (
 )
 
 
-def build_llm() -> ChatGoogle:
-    """Construct a ChatGoogle LLM wired to the Gemma/Gemini model."""
-    return ChatGoogle(
-        model=MODEL_ID,
-        api_key=API_KEY,
-        temperature=0.3,
-        max_output_tokens=4096,
-    )
-
-
 async def main() -> None:
+    """Run the browser agent with ChatBrowserUse."""
     task = os.getenv("TASK", DEFAULT_TASK)
-    llm = build_llm()
+    llm = ChatBrowserUse()
 
     print(f"\n GemmaBrowserAgent starting ...")
-    print(f"   Model : {MODEL_ID}")
+    print(f"   Model : ChatBrowserUse")
     print(f"   Task  : {task}\n")
 
     agent = Agent(task=task, llm=llm)
@@ -70,9 +57,10 @@ async def main() -> None:
 
     print("\n Task complete!")
     print("=" * 60)
-    print(str(result).encode('utf-8', errors='replace').decode('utf-8'))
+    print(result.final_result())
     print("=" * 60)
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
